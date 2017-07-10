@@ -19,15 +19,6 @@ function transform(array,callback){
     return result
 }
 
-// transform([1,2,3],function(i){
-//     console.log(i * 3)
-// })
-//
-// transform([1, 2, 3], function(i) {
-//     console.log(0)
-// })
-
-
 // solucion plataforma
 function transform(arr, func) {
   var transformed = [];
