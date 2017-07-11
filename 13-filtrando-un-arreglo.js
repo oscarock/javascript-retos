@@ -13,25 +13,18 @@
 // filter([1, 2, 3, 4], none) // => []
 
 // mi solucion
-function filter(array,callback){
-    var result = []
-    array.map(function(element) {
-        // console.log(callback(element));
-        // console.log(element % 2 === 0);
-        result.push(callback(element))
-
-    })
-    console.log(result)
+function filter(arr, func) {
+  return arr.filter(func);
 }
 
-filter([1, 2, 3, 4], function(i){
-    i % 2 == 0
-})
+// solucion plataforma
+function filter(arr, func) {
+  var filtered = [];
+  for (var i=0; i < arr.length; i++) {
+    if (func(arr[i])) {
+      filtered.push(arr[i]);
+    }
+  }
 
-// function transform(array,callback){
-//     var result = []
-//     array.map(function(element) {
-//       result.push(callback(element))
-//     })
-//     return result
-// }
+  return filtered;
+}
