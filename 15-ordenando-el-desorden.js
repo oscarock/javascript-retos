@@ -11,9 +11,17 @@
 
 // mi solucion
 function order(array,reverse = ""){
-    if(reverse == true){
-        return array.reverse()
+    if(reverse === true){
+        return array.sort(function(a, b){return b - a})
     }else{
-        return array.sort()
+        return array.sort(function(a, b){return a - b})
     }
+}
+
+
+// solucion plataforma
+function order(arr, reverse) {
+  return arr.sort(function(a, b) {
+    return reverse ? b - a : a - b
+  });
 }
