@@ -7,9 +7,14 @@
 // flatten([[1], [2]]) // => [1, 2]
 // flatten([[1, 2, 3], [4, 5], [6]]); // => [1, 2, 3, 4, 5, 6]
 
-function flatten(array1,array2){
-    var array_concat = array1.concat(array2)
-    return array_concat
+// mi solucion
+function flatten(array1){
+    return [].concat.apply([], array1)
 }
-console.log(flatten([[1], [2]]))
-console.log(flatten([[1, 2, 3], [4, 5], [6]]));
+
+// solucion plataforma
+function flatten(arr) {
+  return arr.reduce(function(memo, a) {
+    return memo.concat(a);
+  }, []);
+}
