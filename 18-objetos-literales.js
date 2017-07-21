@@ -12,21 +12,49 @@
 //
 // Repite el paso 2 y 3 hasta que finalices el reto.
 
+// mi solucion
+var pepito = {
+  nombre: "Pepito",
+}
+
 var maria = {
   nombre: "Terah",
   edad: 32,
   altura: 1.70,
   peso: 60,
   colorPelo: "cafe",
-  colorOjos: "cafe",
+  esposo: pepito,
+  hijos: {
+    german:{
+      nombre: "German"
+    }
+  },
+  bmi: function(){
+    var quadrado = (this.altura * this.altura);
+    var calculo = (this.peso/quadrado);
+    return calculo
+  }
 }
 
+
+// solucion plataforma
 var pepito = {
-  nombre: "Pepito",
-}
+  nombre: 'Pepito'
+};
 
-console.log(maria.esposo())
-//
-// El objeto 'maria' debe tener la propiedad 'esposo' con el valor del objeto 'pepito'
-//
-// El objeto 'pepito' debe tener la propiedad 'nombre' con valor 'Pepito'
+var maria = {
+  nombre: "Terah",
+  edad: 32,
+  altura: 1.70,
+  peso: 60,
+  colorPelo: "cafe",
+  esposo: pepito,
+  hijos: {
+    german: {
+      nombre: "German"
+    }
+  },
+  bmi: function() {
+    return this.peso/Math.pow(this.altura,2)
+  }
+}
