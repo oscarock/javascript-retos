@@ -11,13 +11,46 @@
 // adjustText("Hola", 0) //=> ""
 // adjustText("Hola", 10) //=> "Hola      "
 
+//mi solucion
 function adjustText(str,num){
 	if (str.length > num){
 		return str.slice(0,num)
 	}else{
-		return str
+		if(str.length >= num) return str;
+			var delta = num - str.length;
+		 	var res = str;
+		 	for(var i = 0 ; i < delta ; i++) {
+		   res = res + " ";
+			}
+		return res;
 	}
 }
 
-console.dir(adjustText("", 3))
-console.log(adjustText("hola", 8))
+//solucion plataforma
+function adjustText(str, length) {
+  if (str.length > length) {
+     str = str.substring(0, length);
+  } else {
+    while (str.length < length) {
+      str += " ";
+    }
+  }
+
+  return str;
+}
+
+function adjustText(str, length) {
+  while (str.length < length) {
+    str += " "; 
+  }
+
+  if (str.length > length) {
+     str = str.substring(0, length);
+  }
+
+  return str;
+}
+
+console.log(adjustText("", 3))
+console.log(adjustText("hola", 2))
+
