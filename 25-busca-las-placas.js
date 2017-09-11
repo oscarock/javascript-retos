@@ -11,18 +11,20 @@
 // plates("Iba en un AAA123 y después en un BBB987"); //=> ["AAA123", "BBB987"]
 // plates("no coincide"); // => []
 
+//mi solucion
 function plates(string){
-    var expression = /[A-Z]{3}[0-9]{3}/.exec(string)
-    var palabra = expression
-    if (string.search(palabra)!=-1){
-        console.log('palabra econtrada ' + palabra)
+    if (string.match(/[A-Z]{3}[0-9]{3}/g) != null) {
+    	return string.match(/[A-Z]{3}[0-9]{3}/g)
     }else{
-        console.log("palabra Nooo encontrada " + palabra);
+    	return []
     }
 }
 
-
-
+//solucion plataforma
+function plates(str) {
+  var matches = str.match(/[A-Z]{3}\d{3}/g);
+  return matches ? matches : [];
+}
 
 console.log(plates("AAA123"))
 console.log(plates("Iba en un AAA123 y despues en un BBB987"));
