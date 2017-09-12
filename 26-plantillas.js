@@ -19,23 +19,45 @@
 
 // mi solucion
 function template(str,obj){
-    // console.log(str)
-    var expresion = str.match(/\[([^\]]+)]/g);
-    // console.log(expresion);
-    var a = expresion.toString().split('[')
-    var b = a.toString().split(']')
-    var c = b.toString().split(',')
-    console.log(c);
-    // c.forEach(function(e){
-    //     console.log("Hola German" + e);
-    // })
-    // expresion.forEach(function(e){
-    //     console.log(e);
-    //     var a = e.split(']')
-    //
-    //     console.log(typeof(a));
-    // })
+    var re = /\[([^\]]*)\]/g, 
+        match = ""
+    while(match = re.exec(str)) {
+        str = str.replace(match[0], obj[match[1]])
+        // re.lastIndex = 0;
+    }
+    return str;
 }
 
-console.log(template("Hola [nombre]", { nombre: "German" }));
-// console.log(template("Hola [nombre], tu saldo es [saldo]", { nombre: "German", saldo: 12000 }));
+//solucion plataforma
+function template(str, data) {
+  var regexp = /\[(.*?)\]/g;
+  var vars = [];
+
+  // obtenemos las variables del texto
+  var matches = regexp.exec(str);
+  while (matches) {
+    vars.push(matches[1]);
+    matches = regexp.exec(str);
+  }
+
+  // reemplazamos las variables con los valores que vienen en el objeto
+  for (var i=0; i < vars.length; i++) {
+    str = str.replace("[" + vars[i] + "]", data[vars[i]]);
+  }
+
+  return str;
+}
+
+//solucion plataforma
+var template = function(str, obj){
+  var arr = [];
+  var regex = /\[(.*?)\]/g;
+  str.replace(regex, function(string, match){
+    str = str.replace(/\[(.*?)\]/, obj[match])
+  });
+  return str;
+};
+
+console.log(template("Hola [nombre]", { nombre: "German" })); // => "Hola German");
+console.log(template("Hola [nombre], tu saldo es [saldo]", { nombre: "German", saldo: 12000 }));
+console.log(template("Hola mundo", {}))
